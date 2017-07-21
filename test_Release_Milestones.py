@@ -7,10 +7,12 @@
 
 import pytest
 from Selenium_Release_Milestones import Selenium_Release_Milestones
+import logging
 
 class TestRelease_Milestones:
     def setup_class(self):
         self.test = Selenium_Release_Milestones()
+
 
     # 点击Home文字链接
     def test_Click_Home(self):

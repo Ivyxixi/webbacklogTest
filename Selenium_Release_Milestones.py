@@ -5,11 +5,19 @@
 
 from selenium import webdriver
 import time
+import logging
 
 class Selenium_Release_Milestones:
 
     #构造函数,加载Webbacklog页面,并跳转到Release Milestones页面
     def __init__(self):
+        self.logger = logging.getLogger()
+        self.logger.setLevel(logging.INFO)
+        self.fh = logging.FileHandler(r"./log.txt")
+        self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        self.fh.setFormatter(self.formatter)
+        self.logger.addHandler(self.fh)
+
         self.driver = webdriver.Chrome()
         self.url="http://127.0.0.1:8000/webbacklog/"
         self.driver.maximize_window()
@@ -22,7 +30,10 @@ class Selenium_Release_Milestones:
 
     #返回页面title
     def Find_title_Release_Milestones(self):
-        return self.driver.find_element_by_tag_name("h1").text , self.driver.find_element_by_tag_name("h3").text
+        try:
+            return self.driver.find_element_by_tag_name("h1").text , self.driver.find_element_by_tag_name("h3").text
+        except:
+            self.logger.exception("The 'Find_title_Release_Milestones' method Exception Logged")
 
     #点击Home文字链接
     def Click_Home(self):
@@ -32,15 +43,21 @@ class Selenium_Release_Milestones:
             time.sleep(1)
             self.driver.back()
             string = "Success"
+            self.logger.info("The 'Click_Home' method running Successfully")
         except:
+            self.logger.exception("The 'Click_Home' method Exception Logged")
             string = "Error :Element in method 'Click_Home' Not Founded"
         return string
 
      # 验证Release mgmt和Release Milestonss文字是否显示
     def Find_link_Test(self):
-        text1 = self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[1]/ol/li[2]").text
-        text2 = self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[1]/ol/li[3]").text
-        return text1,text2
+        try:
+            text1 = self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[1]/ol/li[2]").text
+            text2 = self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[1]/ol/li[3]").text
+            self.logger.info("The 'Find_link_Test' method running Successfully")
+            return text1, text2
+        except:
+            self.logger.exception("The 'Find_link_Test' method Exception Logged")
 
     #点击问号按钮并关闭
     def Click_question_Button(self):
@@ -50,8 +67,10 @@ class Selenium_Release_Milestones:
             time.sleep(1)
             self.driver.find_element_by_xpath("//*[@id='milestoneModal']/div/div/div/div/div[1]/button").click()
             string = "Success"
+            self.logger.info("The 'Click_question_Button' method running Successfully")
         except:
             string = "Error :Element in method 'Click_question_Button' Not Founded"
+            self.logger.exception("The 'Click_question_Button' method Exception Logged")
         return string
 
     #验证搜索功能
@@ -63,8 +82,10 @@ class Selenium_Release_Milestones:
             self.driver.find_element_by_xpath("//*[@id='milestoneTable_filter']/label/input").clear()
             self.driver.find_element_by_xpath("//*[@id='milestoneTable_filter']/label/input").send_keys("s")
             string = "Success"
+            self.logger.info("The 'Search_Send_Keys' method running Successfully")
         except:
             string = "Error :Element in method 'Search_Send_Keys' Not Founded"
+            self.logger.exception("The 'Search_Send_Keys' method Exception Logged")
         return string
 
     #点击每个表头
@@ -91,8 +112,10 @@ class Selenium_Release_Milestones:
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//*[@id='milestoneTable']/thead/tr/th[5]").click()
             string = "Success"
+            self.logger.info("The 'Click_table_title' method running Successfully")
         except:
             string = "Error :Element in method 'Click_table_title' Not Founded"
+            self.logger.exception("The 'Click_table_title' method Exception Logged")
         return string
 
     #验证edit功能，并在空白处添加日期后删除
@@ -109,8 +132,10 @@ class Selenium_Release_Milestones:
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//*[@id='milestoneTable']/tbody/tr[1]/td[6]/buttn[2]").click()
             string = "Success"
+            self.logger.info("The 'Click_Edit' method running Successfully")
         except:
             string = "Error :Element in method 'Click_Edit' Not Founded"
+            self.logger.exception("The 'Click_Edit' method Exception Logged")
         return string
 
     #选择显示多少条信息
@@ -127,8 +152,10 @@ class Selenium_Release_Milestones:
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//*[@id='milestoneTable_length']/label/select").click()
             string = "Success"
+            self.logger.info("The 'Select_Show_Num' method running Successfully")
         except:
             string = "Error :Element in method 'Select_Show_Num' Not Founded"
+            self.logger.exception("The 'Select_Show_Num' method Exception Logged")
         return string
 
     #点击Nokia文字链接
@@ -139,30 +166,38 @@ class Selenium_Release_Milestones:
             time.sleep(1)
             self.driver.back()
             string = "Success"
+            self.logger.info("The 'Click_Nokia' method running Successfully")
         except:
             string = "Error :Element in method 'Click_Nokia' Not Founded"
+            self.logger.exception("The 'Click_Nokia' method Exception Logged")
         return string
 
 
     #验证表格中数据是否正确
     def Verify_Table_Data(self):
-        return self.driver.find_element_by_xpath("//*[@id='milestoneTable']/tbody/tr[1]/td[1]/span").text
+        try:
+            return self.driver.find_element_by_xpath("//*[@id='milestoneTable']/tbody/tr[1]/td[1]/span").text
+        except:
+            self.logger.exception("The 'Verify_Table_Data' method Exception Logged")
 
     # 检查表格完整性
     def Verify_Table_Integrity(self):
-        table = []
-        time.sleep(3)
-        table_loc = self.driver.find_element_by_xpath("//*[@id='milestoneTable']/tbody")
-        rows = len(table_loc.find_elements_by_tag_name("tr"))
-        columns = len(
-            table_loc.find_element_by_xpath("//*[@id='milestoneTable']/tbody/tr[1]").find_elements_by_tag_name("td"))
-        for row in range(1, rows + 1):
-            table_row = []
-            for column in range(1, columns + 1):
-                xpath = "//*[@id='milestoneTable']/tbody/tr[" + str(row) + "]/td[" + str(column) + "]"
-                table_row.append(self.driver.find_element_by_xpath(xpath).text)
-            table.append(table_row)
-        return table
+        try:
+            table = []
+            time.sleep(3)
+            table_loc = self.driver.find_element_by_xpath("//*[@id='milestoneTable']/tbody")
+            rows = len(table_loc.find_elements_by_tag_name("tr"))
+            columns = len(
+                table_loc.find_element_by_xpath("//*[@id='milestoneTable']/tbody/tr[1]").find_elements_by_tag_name("td"))
+            for row in range(1, rows + 1):
+                table_row = []
+                for column in range(1, columns + 1):
+                    xpath = "//*[@id='milestoneTable']/tbody/tr[" + str(row) + "]/td[" + str(column) + "]"
+                    table_row.append(self.driver.find_element_by_xpath(xpath).text)
+                table.append(table_row)
+            return table
+        except:
+            self.logger.exception("The 'Verify_Table_Integrity' method Exception Logged")
 
     #析构函数
     def __del__(self):
