@@ -77,7 +77,7 @@ class Testwebbacklog_AbEE:
                 xlk2[j].find_element_by_tag_name("a").click()
                 time.sleep(1)
             driver.find_element_by_xpath("//*[@id='systemRelease']").click()
-            driver.find_element_by_xpath("//*[@id='charts']/div[1]/canvas").click()
+        driver.find_element_by_xpath("//*[@id='charts']/div[1]/canvas").click()
 
     # 用来查找页面元素是否存在
     # Used to find if the page element exists
