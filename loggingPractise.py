@@ -121,6 +121,9 @@ class mylogging:
         #logging有一个日志处理的主对象，其它处理方式都是通过addHandler添加进去的
         logging.getLogger('').addHandler(Rthandler)
 
+    #有多个模块需要输出日志时，日志的输出顺序就是模块的执行顺序
+
+
 
 
 
