@@ -98,5 +98,5 @@ class TestResource_Allocation_To_Release:
         assert "Success" == str
 
 if __name__ == '__main__':
-    pytest.main("-q test_baidu.py")
+    pytest.main("-q test_Resource_Allocation_To_Release.py")
 

@@ -72,5 +72,5 @@ class TestRelease_Milestones:
         self.test.driver.quit()
 
 if __name__ == '__main__':
-    pytest.main("-q test_baidu.py")
+    pytest.main("-q test_Release_Milestones.py")
 
