@@ -6,27 +6,27 @@
 from selenium import webdriver
 import time
 import logging
+from configLogFormat import LogFormat
 
 class Selenium_Release_Milestones:
 
     #构造函数,加载Webbacklog页面,并跳转到Release Milestones页面
     def __init__(self):
-        self.logger = logging.getLogger()
-        self.logger.setLevel(logging.INFO)
-        self.fh = logging.FileHandler(r"./log.txt")
-        self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        self.fh.setFormatter(self.formatter)
-        self.logger.addHandler(self.fh)
-
-        self.driver = webdriver.Chrome()
-        self.url="http://127.0.0.1:8000/webbacklog/"
-        self.driver.maximize_window()
-        self.driver.get(self.url)
-        time.sleep(1)
-        self.driver.find_element_by_link_text("Release mgmt.").click()
-        time.sleep(1)
-        self.driver.find_element_by_link_text("Release Milestones").click()
-        time.sleep(1)
+        LogFormat()
+        self.logger = logging
+        self.logger.info("the test of 'Selenium_Release_Milestones.py' starts")
+        try:
+            self.driver = webdriver.Chrome()
+            self.url="http://127.0.0.1:8000/webbacklog/"
+            self.driver.maximize_window()
+            self.driver.get(self.url)
+            time.sleep(1)
+            self.driver.find_element_by_link_text("Release mgmt.").click()
+            time.sleep(1)
+            self.driver.find_element_by_link_text("Release Milestones").click()
+            time.sleep(1)
+        except:
+            self.logger.info("The web opened failed.Please check the Webbacklog program is running.")
 
     #返回页面title
     def Find_title_Release_Milestones(self):
@@ -202,13 +202,9 @@ class Selenium_Release_Milestones:
     #析构函数
     def __del__(self):
         self.driver.quit()
+        self.logger.info("the test of 'Selenium_Release_Milestones.py' has finished.")
 
-'''
-test = Selenium_Release_Milestones()
-test.Load()
-test.Click_to_Release_Milestones()
-test.Find_link_Test()
-'''
+
 
 
 
