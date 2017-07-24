@@ -113,6 +113,7 @@ class mylogging:
     #   logging.handlers.MemoryHandler: 日志输出到内存中的制定buffer
     #   logging.handlers.HTTPHandler: 通过"GET"或"POST"远程输出到HTTP服务器
     #   注：StreamHandler和FileHandler是常用的日志处理方式，所以直接包含在logging模块中，而其他方式则包含在logging.handlers模块中
+
     def test4Rotate(self):
         Rthandler = RotatingFileHandler('myapp.log', maxBytes=10 * 1024 * 1024, backupCount=5)
         Rthandler.setLevel(logging.INFO)

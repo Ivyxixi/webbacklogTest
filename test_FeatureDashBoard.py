@@ -2,11 +2,6 @@
 #@ 2017/7/18
 #@ author:FuYuQian
 #@ content: pytest of FeatureDashBoard.py
-#1  完成了最基本的函数调用测试
-#2  待改进：
-#3       在pytest中增加函数返回值的与设想值的判断
-#4       下次边写函数边测试，而不是全部写完再写test_文件
-#5       在原文件中增加一些try,catch语句，更加方便。
 import pytest
 from FeatureDashBoard import*
 
