@@ -222,7 +222,7 @@ class FeatureDashBoard():
                     es = driver.find_elements_by_xpath(xpath)
                     print es[0].text
                     mylist[s-1]=es[0].text
-                    es[0].click()
+                    #es[0].click()
                 elif s<=13:
                     xpath = "//*[@id='table-feature_wrapper']/div[2]/div/div/div[2]/div[1]/div/table/thead/tr/th[" + str(s) + "]"
                     e = driver.find_element_by_xpath(xpath)
