@@ -4,6 +4,7 @@
 #@ content:pytest for login
 
 import pytest
+import logging
 from login import *
 
 class TestLogin:
