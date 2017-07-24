@@ -108,7 +108,7 @@ class TestFeatureDashBoard(object):
 
 
     def teardown_class(self):
-        self.myT.driver.quit()
+        self.myT.__del__()
         pass
 
 if __name__=='__main__':
