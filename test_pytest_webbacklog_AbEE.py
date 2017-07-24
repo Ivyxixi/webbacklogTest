@@ -12,14 +12,14 @@ from  selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import time
-
-#ddd
+from configLogFormat import *
 
 
 class Testwebbacklog_AbEE:
     # setup 用于设置初始化的部分
     # setup is used to set the initialization section
     def setup(self):
+        LogFormat()
         self.driver = webdriver.Chrome()
         # 超时重连
         # Timeout reconnection
@@ -33,6 +33,7 @@ class Testwebbacklog_AbEE:
         # 是否继续接受下一下警告
         # Would  like to proceed with the next warning
         self.accept_next_alert = True
+        logging.info("开始测试test_pytest_webbacklog_AbEE.py")
 
 
 
@@ -41,44 +42,65 @@ class Testwebbacklog_AbEE:
     def test_webbacklog_AbEE(self):
         driver = self.driver
         driver.get(self.base_url)
-        #找到帮助按钮
-        #find help button
-        driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[1]/div[1]/div/div[1]/i").click()
-        time.sleep(1)
-
-        # 找到x按钮
-        # find close button
-        driver.find_element_by_xpath("//*[@id='netCapacityModal']/div/div/div/div/div[1]/button").click()
-        time.sleep(1)
-
-        #测试home
-        #test home
-        driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[1]/ol/li[1]/a").click()
-        time.sleep(1)
-        #回退
-        #back
-        driver.back()
-        time.sleep(1)
-
-        #测试页面一些文字
-        #test title
-        title = driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[1]/h1").text
-        assert title == u'Allocation vs backlog EEs   Under Construction'
-
-        #测试图表
-        #test table
-        driver.find_element_by_xpath("//*[@id='systemRelease']").click()
-        xlk1 = driver.find_elements_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[2]/div[1]/div[1]/ul/li")
-        for i in range(6):
-            xlk1[i].find_element_by_tag_name("a").click()
-            xlk2 = driver.find_elements_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[2]/div[1]/div[2]/ul/li")
+        try:
+            #找到帮助按钮
+            #find help button
+            driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[1]/div[1]/div/div[1]/i").click()
             time.sleep(1)
-            for j in range(10):
-                driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-                xlk2[j].find_element_by_tag_name("a").click()
-                time.sleep(1)
+            logging.info("帮助按钮正常 help button is true")
+        except:
+            logging.error("帮助按钮异常 help button is wrong")
+
+        try:
+            # 找到x按钮
+            # find close button
+            driver.find_element_by_xpath("//*[@id='netCapacityModal']/div/div/div/div/div[1]/button").click()
+            time.sleep(1)
+            logging.info("关闭按钮正常 close button is true")
+        except:
+            logging.error("关闭按钮异常 close button is wrong")
+
+        try:
+            #测试home
+            #test home
+            driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[1]/ol/li[1]/a").click()
+            time.sleep(1)
+            #回退
+            #back
+            driver.back()
+            time.sleep(1)
+            logging.info("home按钮正常 home button is true")
+        except:
+            logging.error("home按钮异常 home button is wrong")
+
+        try:
+            #测试页面一些文字
+            #test title
+            title = driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[1]/h1").text
+            assert title == u'Allocation vs backlog EEs   Under Construction'
+            logging.info("文字显示正常 Text is true")
+        except:
+            logging.error("文字显示异常 Text is wrong")
+
+        try:
+            #测试图表
+            #test table
             driver.find_element_by_xpath("//*[@id='systemRelease']").click()
-        driver.find_element_by_xpath("//*[@id='charts']/div[1]/canvas").click()
+            xlk1 = driver.find_elements_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[2]/div[1]/div[1]/ul/li")
+            for i in range(6):
+                xlk1[i].find_element_by_tag_name("a").click()
+                xlk2 = driver.find_elements_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[2]/div[1]/div[2]/ul/li")
+                time.sleep(1)
+                for j in range(10):
+                    driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+                    xlk2[j].find_element_by_tag_name("a").click()
+                    time.sleep(1)
+                driver.find_element_by_xpath("//*[@id='systemRelease']").click()
+            driver.find_element_by_xpath("//*[@id='charts']/div[1]/canvas").click()
+            logging.info("图表正常 chart is true")
+        except:
+            logging.error("图表异常 chart is wrong")
+        logging.info("结束测试test_pytest_webbacklog_AbEE.py")
 
     # 用来查找页面元素是否存在
     # Used to find if the page element exists
@@ -122,6 +144,7 @@ class Testwebbacklog_AbEE:
 
 
 if __name__ == "__main__":
-    pytest.main("test_pytest_webbacklog_AbEE.py")
+    pytest.main("-q test_pytest_webbacklog_AbEE.py")
+
 
 

@@ -11,6 +11,7 @@ import pytest
 from  selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from configLogFormat import *
 import time
 
 
@@ -19,6 +20,7 @@ class Testwebbacklog_EER:
     # setup 用于设置初始化的部分
     # setup is used to set the initialization section
     def setup(self):
+        LogFormat()
         self.driver = webdriver.Chrome()
         # 超时重连
         # Timeout reconnection
@@ -250,199 +252,278 @@ class Testwebbacklog_EER:
     def test_baidu(self):
         driver = self.driver
         driver.get(self.base_url)
-        #找到帮助按钮
-        #find help button
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[1]/div[1]/div/div[1]/i").click()
-        time.sleep(1)
+        try:
+            #找到帮助按钮
+            #find help button
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[1]/div[1]/div/div[1]/i").click()
+            time.sleep(1)
+            logging.info("帮助按钮正常 help button is true")
+        except:
+            logging.error("帮助按钮异常 help button is wrong")
+        try:
+            # 找到x按钮
+            # find close button
+            driver.find_element_by_xpath("//*[@id='featurebuildModal']/div/div/div/div/div[1]/button").click()
+            time.sleep(1)
+            logging.info("关闭按钮正常 close button is true")
+        except:
+            logging.error("关闭按钮异常 close button is wrong")
 
-        # 找到x按钮
-        # find close button
-        driver.find_element_by_xpath("//*[@id='featurebuildModal']/div/div/div/div/div[1]/button").click()
-        time.sleep(1)
+        try:
+            #测试home
+            #test home
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[1]/ol/li/a").click()
+            time.sleep(1)
+            #回退
+            #back
+            driver.back()
+            time.sleep(1)
+            logging.info("home按钮正常 home button is true")
+        except:
+            logging.error("home按钮异常 home button is wrong")
 
-        #测试home
-        #test home
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[1]/ol/li/a").click()
-        time.sleep(1)
-        #回退
-        #back
-        driver.back()
-        time.sleep(1)
+        try:
+            #测试页面文字
+            #test title
+            title = driver.find_element_by_xpath("/html/body/div/div[1]/section[1]/h1").text
+            assert title == u'Feature Build Entry & Exit   Under Construction'
+            logging.info("文字显示正常 Text is true")
+        except:
+            logging.error("文字显示异常 Text is wrong")
 
-        #测试页面文字
-        #test title
-        title = driver.find_element_by_xpath("/html/body/div/div[1]/section[1]/h1").text
-        assert title == u'Feature Build Entry & Exit   Under Construction'
+        try:
+            #选择5g17,1706,all,pred这张表格
+            #chose 5g17,1706,all,pred table
+            driver.find_element_by_xpath("//*[@id='systemRelease']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[2]/ul/li[1]/a").click()
+            driver.find_element_by_xpath("//*[@id='fbSelect']").click()
+            driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[3]/ul/li[1]/a").click()
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[1]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17,1706,all,pred这张表格正常 5g17,1706,all,pred table true")
+        except:
+            logging.error("5g17,1706,all,pred这张表格异常 5g17,1706,all,pred table wrong")
 
-        #选择5g17,1706,all,pred这张表格
-        #chose 5g17,1706,all,pred table
-        driver.find_element_by_xpath("//*[@id='systemRelease']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[2]/ul/li[1]/a").click()
-        driver.find_element_by_xpath("//*[@id='fbSelect']").click()
-        driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[3]/ul/li[1]/a").click()
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[1]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
-        #测试该表格数据
-        #test table data
-        for key in self.csjl.keys():
-            bjl = driver.find_element_by_xpath(key)
-            jl = bjl.text
-            if jl =="Not Done":
-                    bjl.click()
-                    time.sleep(1)
+        try:
+            #测试该表格数据
+            #test table data
+            for key in self.csjl.keys():
+                bjl = driver.find_element_by_xpath(key)
+                jl = bjl.text
+                if jl =="Not Done":
+                        bjl.click()
+                        time.sleep(1)
 
-                    #调到第2页
-                    #jump to 2
-                    driver.find_element_by_xpath("//*[@id='tbl-notdone_paginate']/ul/li[3]/a")
-                    time.sleep(1)
+                        #调到第2页
+                        #jump to 2
+                        driver.find_element_by_xpath("//*[@id='tbl-notdone_paginate']/ul/li[3]/a")
+                        time.sleep(1)
 
-                    #搜索框输入"5GC000224"
-                    #search input "5GC000224"
-                    driver.find_element_by_xpath("//*[@id='tbl-notdone_filter']/label/input").send_keys("5GC000224")
-                    time.sleep(1)
+                        #搜索框输入"5GC000224"
+                        #search input "5GC000224"
+                        driver.find_element_by_xpath("//*[@id='tbl-notdone_filter']/label/input").send_keys("5GC000224")
+                        time.sleep(1)
 
-                    # 回退
-                    # back
-                    driver.back()
-                    time.sleep(1)
-                    # 选择5g17,1706,all,pred这张表格
-                    # chose 5g17,1706,all,pred table
-                    driver.find_element_by_xpath("//*[@id='systemRelease']").click()
-                    driver.find_element_by_xpath(
-                        "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[2]/ul/li[1]/a").click()
-                    driver.find_element_by_xpath("//*[@id='fbSelect']").click()
-                    driver.find_element_by_xpath(
-                        "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[3]/ul/li[1]/a").click()
-                    driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-                    driver.find_element_by_xpath(
-                        "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[1]/a").click()
-                    driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-                    driver.find_element_by_xpath(
-                        "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-            assert jl == self.csjl[key]
+                        # 回退
+                        # back
+                        driver.back()
+                        time.sleep(1)
+                        # 选择5g17,1706,all,pred这张表格
+                        # chose 5g17,1706,all,pred table
+                        driver.find_element_by_xpath("//*[@id='systemRelease']").click()
+                        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[2]/ul/li[1]/a").click()
+                        driver.find_element_by_xpath("//*[@id='fbSelect']").click()
+                        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[3]/ul/li[1]/a").click()
+                        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+                        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[1]/a").click()
+                        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+                        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+                assert jl == self.csjl[key]
+            logging.info("5g17,1706,all,pred这张表格数据正常 5g17,1706,all,pred table data true")
+        except:
+            logging.info("5g17,1706,all,pred这张表格数据异常 5g17,1706,all,pred table data wrong")
 
-        # 选择5g17,1706,FT,pred这张表格
-        #chose 5g17,1706,FT,pred table
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[2]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17,1706,FT,pred这张表格
+            #chose 5g17,1706,FT,pred table
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[2]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17,1706,FT,pred这张表格正常 5g17,1706,FT,pred table true")
+        except:
+            logging.error("5g17,1706,FT,pred这张表格异常 5g17,1706,FT,pred table wrong")
 
-        # 选择5g17,1706,FT,e这张表格
-        # chose 5g17,1706,FT,e table
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17,1706,FT,e这张表格
+            # chose 5g17,1706,FT,e table
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
+            time.sleep(1)
+            logging.info("5g17,1706,FT,e这张表格正常 5g17,1706,FT,e table true")
+        except:
+            logging.erroe("5g17,1706,FT,e这张表格异常 5g17,1706,FT,e table wrong")
 
-        # 选择5g17,1706,EXT,pred这张表格
-        # chose 5g17,1706,EXT,pred table
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[3]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17,1706,EXT,pred这张表格
+            # chose 5g17,1706,EXT,pred table
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[3]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17,1706,EXT,pred这张表格正常 5g17,1706,EXT,pred table true")
+        except:
+            logging.error("5g17,1706,EXT,pred这张表格异常 5g17,1706,EXT,pred table wrong")
 
-        # 选择5g17,1707,EXT,pred这张表格
-        # chose 5g17,1707,EXT,pred table
-        driver.find_element_by_xpath("//*[@id='fbSelect']").click()
-        driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[3]/ul/li[2]/a").click()
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[1]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17,1707,EXT,pred这张表格
+            # chose 5g17,1707,EXT,pred table
+            driver.find_element_by_xpath("//*[@id='fbSelect']").click()
+            driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[3]/ul/li[2]/a").click()
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[1]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17,1707,EXT,pred这张表格正常 5g17,1707,EXT,pred table true")
+        except:
+            logging.error("5g17,1707,EXT,pred table这张表格异常 5g17,1707,EXT,pred table table wrong")
 
-        # 选择5g17,1707,FT,pred这张表格
-        # chose 5g17,1707,FT,pred table
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[2]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17,1707,FT,pred这张表格
+            # chose 5g17,1707,FT,pred table
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[2]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17,1707,FT,pred这张表格正常 5g17,1707,FT,pred table true")
+        except:
+            logging.error("5g17,1707,FT,pred这张表格异常 5g17,1707,FT,pred table wrong")
 
-        # 选择5g17,1707,FT,e这张表格
-        # chose 5g17,1707,FT,e table
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17,1707,FT,e这张表格
+            # chose 5g17,1707,FT,e table
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
+            time.sleep(1)
+            logging.info("5g17,1707,FT,e这张表格正常 5g17,1707,FT,e table true")
+        except:
+            logging.error("5g17,1707,FT,e这张表格异常 5g17,1707,FT,e table wrong")
 
-        # 选择5g17,1707,EXT,pred这张表格
-        # chose 5g17,1707,EXT,pred table
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[3]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17,1707,EXT,pred这张表格
+            # chose 5g17,1707,EXT,pred table
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[3]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17,1707,EXT,pred这张表格正常 5g17,1707,EXT,pred table true")
+        except:
+            logging.error("5g17,1707,EXT,pred这张表格异常 5g17,1707,EXT,pred table wrong")
 
-        # 选择5g17A5G,1706,all,pred这张表格
-        # chose 5g17A5G,1706,all,pred table
-        driver.find_element_by_xpath("//*[@id='systemRelease']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[2]/ul/li[2]/a").click()
-        driver.find_element_by_xpath("//*[@id='fbSelect']").click()
-        driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[3]/ul/li[1]/a").click()
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[1]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17A5G,1706,all,pred这张表格
+            # chose 5g17A5G,1706,all,pred table
+            driver.find_element_by_xpath("//*[@id='systemRelease']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[2]/ul/li[2]/a").click()
+            driver.find_element_by_xpath("//*[@id='fbSelect']").click()
+            driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[3]/ul/li[1]/a").click()
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[1]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17A5G,1706,all,pred这张表格正常 5g17A5G,1706,all,pred table true")
+        except:
+            logging.error("5g17A5G,1706,all,pred这张表格异常 5g17A5G,1706,all,pred table wrong")
+        try:
+            # 选择5g17A5G,1706,FT,pred这张表格
+            # chose 5g17A5G,1706,FT,pred table
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[2]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17A5G,1706,FT,pred这张表格正常 5g17A5G,1706,FT,pred table true")
+        except:
+            logging.error("5g17A5G,1706,FT,pred这张表格异常 5g17A5G,1706,FT,pred table wrong")
 
-        # 选择5g17A5G,1706,FT,pred这张表格
-        # chose 5g17A5G,1706,FT,pred table
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[2]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17A5G,1706,FT,e这张表格
+            # chose 5g17A5G,1706,FT,e table
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
+            time.sleep(1)
+            logging.info("5g17A5G,1706,FT,e这张表格正常 5g17A5G,1706,FT,e table true")
+        except:
+            logging.error("5g17A5G,1706,FT,e这张表格异常 5g17A5G,1706,FT,e table wrong")
 
-        # 选择5g17A5G,1706,FT,e这张表格
-        # chose 5g17A5G,1706,FT,e table
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17A5G,1706,EXT,pred这张表格
+            # chose 5g17A5G,1706,EXT,pred table
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[3]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17A5G,1706,EXT,pred这张表格正常 5g17A5G,1706,EXT,pred table true")
+        except:
+            logging.info("5g17A5G,1706,EXT,pred这张表格异常 5g17A5G,1706,EXT,pred table wrong")
 
-        # 选择5g17A5G,1706,EXT,pred这张表格
-        # chose 5g17A5G,1706,EXT,pred table
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[3]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17A5G,1707,EXT,pred这张表格
+            # chose 5g17A5G,1707,EXT,pred table
+            driver.find_element_by_xpath("//*[@id='fbSelect']").click()
+            driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[3]/ul/li[2]/a").click()
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[1]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17A5G,1707,EXT,pred这张表格正常 5g17A5G,1707,EXT,pred table true")
+        except:
+            logging.error("5g17A5G,1707,EXT,pred这张表格异常 5g17A5G,1707,EXT,pred table wrong")
 
-        # 选择5g17A5G,1707,EXT,pred这张表格
-        # chose 5g17A5G,1707,EXT,pred table
-        driver.find_element_by_xpath("//*[@id='fbSelect']").click()
-        driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[3]/ul/li[2]/a").click()
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[1]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17A5G,1707,FT,pred这张表格
+            # chose 5g17A5G,1707,FT,pred table
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[2]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17A5G,1707,FT,pred这张表格正常 5g17A5G,1707,FT,pred table true")
+        except:
+            logging.error("5g17A5G,1707,FT,pred这张表格异常 5g17A5G,1707,FT,pred table wrong")
 
-        # 选择5g17A5G,1707,FT,pred这张表格
-        # chose 5g17A5G,1707,FT,pred table
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[2]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17A5G,1707,FT,e这张表格
+            # chose 5g17A5G,1707,FT,e table
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
+            time.sleep(1)
+            logging.info("5g17A5G,1707,FT,e这张表格正常 5g17A5G,1707,FT,e table true")
+        except:
+            logging.error("5g17A5G,1707,FT,e这张表格异常 5g17A5G,1707,FT,e table wrong")
 
-        # 选择5g17A5G,1707,FT,e这张表格
-        # chose 5g17A5G,1707,FT,e table
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
-        time.sleep(1)
-
-        # 选择5g17A5G,1707,EXT,pred这张表格
-        # chose 5g17A5G,1707,EXT,pred table
-        driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[3]/a").click()
-        driver.find_element_by_xpath("//*[@id='viewSelect']").click()
-        driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
-        time.sleep(1)
+        try:
+            # 选择5g17A5G,1707,EXT,pred这张表格
+            # chose 5g17A5G,1707,EXT,pred table
+            driver.find_element_by_xpath("//*[@id='lifeCycleSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[4]/ul/li[3]/a").click()
+            driver.find_element_by_xpath("//*[@id='viewSelect']").click()
+            driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
+            time.sleep(1)
+            logging.info("5g17A5G,1707,EXT,pred这张表格正常 5g17A5G,1707,EXT,pred table true")
+        except:
+            logging.error("5g17A5G,1707,EXT,pred这张表格异常 5g17A5G,1707,EXT,pred table wrong")
 
 
 
