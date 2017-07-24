@@ -5,7 +5,6 @@
 #  用法，需要对输出进行格式化的时候只需要申明一个LogFormat类即可
 
 import logging
-from selenium import webdriver
 
 class LogFormat:
     def __init__(self):
@@ -18,10 +17,6 @@ class LogFormat:
                             datefmt='%a, %d %b %Y %H:%M:%S',
                             filename='myapp.log',
                             filemode='w')
-
-        logging.debug('debug message')
-        logging.info('info message')
-        logging.warning('warn message')
 
     def __del__(self):
         pass

@@ -6,26 +6,27 @@
 from selenium import webdriver
 import time
 import logging
+from configLogFormat import LogFormat
 
 class Selenium_Resource_Allocation_To_Release:
 
     def __init__(self):
-        logging.basicConfig(level=logging.INFO,
-                            format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
-                            datefmt='%a, %d %b %Y %H:%M:%S',
-                            filename=r"./log.txt",
-                            filemode='w')
+        LogFormat()
         self.logger = logging
+        self.logger.info("the test of 'Selenium_Release_Milestones.py' starts")
 
-        self.driver = webdriver.Chrome()
-        self.url="http://127.0.0.1:8000/webbacklog/"
-        self.driver.maximize_window()
-        self.driver.get(self.url)
-        time.sleep(1)
-        self.driver.find_element_by_link_text("Resource mgmt.").click()
-        time.sleep(1)
-        self.driver.find_element_by_link_text("Resource allocation to releases").click()
-        time.sleep(1)
+        try:
+            self.driver = webdriver.Chrome()
+            self.url="http://127.0.0.1:8000/webbacklog/"
+            self.driver.maximize_window()
+            self.driver.get(self.url)
+            time.sleep(1)
+            self.driver.find_element_by_link_text("Resource mgmt.").click()
+            time.sleep(1)
+            self.driver.find_element_by_link_text("Resource allocation to releases").click()
+            time.sleep(1)
+        except:
+            self.logger.info("The web opened failed.Please check the Webbacklog program is running.")
 
     # 返回页面title
     def Find_title_Resource_Allocation_To_Release(self):
@@ -299,3 +300,7 @@ class Selenium_Resource_Allocation_To_Release:
             self.logger.exception("The 'Table_Page_Change' method Exception Logged")
         return string
 
+    # 析构函数
+    def __del__(self):
+        self.driver.quit()
+        self.logger.info("the test of 'Selenium_Resource_Allocation_To_Release.py' has finished.")

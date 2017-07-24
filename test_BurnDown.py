@@ -50,7 +50,8 @@ class TestBurnDown:
         assert(aim==succ)
 
     def teardown_class(self):
-        self.myT.driver.quit()
+        #self.myT.driver.quit()
+        self.myT.__del__()
 
 
 if __name__ == '__main__':

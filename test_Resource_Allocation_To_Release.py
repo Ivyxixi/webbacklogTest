@@ -14,20 +14,20 @@ class TestResource_Allocation_To_Release:
         self.test = Selenium_Resource_Allocation_To_Release()
 
     def teardown_class(self):
-        self.test.driver.quit()
+        del self.test
 
     # 验证3个head标签是否正常显示
     def test_Find_title_Resource_Allocation_To_Release(self):
         assert ("Resource Allocation To Release", "Pipeline Info","Pipeline Charts") == self.test.Find_title_Resource_Allocation_To_Release()
 
-    # 验证Release mgmt和Release Milestonss等文字是否正常显示
-    def test_Find_link_Test(self):
-        assert "Release mgmt.", "Release Milestones" == self.test.Find_link_Test()
-
     # 点击Home文字链接
     def test_Click_Home(self):
         str = self.test.Click_Home()
         assert "Success" == str
+
+    # 验证Release mgmt和Release Milestonss等文字是否正常显示
+    def test_Find_link_Test(self):
+        assert "Release mgmt.", "Release Milestones" == self.test.Find_link_Test()
 
     # 点击问号按钮并关闭
     def test_Click_question_Button(self):

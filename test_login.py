@@ -4,15 +4,16 @@
 #@ content:pytest for login
 
 import pytest
-import logging
 from login import *
 
 class TestLogin:
     def setup_class(self):
         self.myT=login()
 
+
     def teardown_class(self):
-        self.myT.driver.quit()
+        #self.myT.driver.quit()
+        self.myT.__del__()
 
     def test_loginLogo(self):
         aim="Webbacklog"
