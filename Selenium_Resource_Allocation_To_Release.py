@@ -6,26 +6,27 @@
 from selenium import webdriver
 import time
 import logging
+from configLogFormat import LogFormat
 
 class Selenium_Resource_Allocation_To_Release:
 
     def __init__(self):
-        self.logger = logging.getLogger()
-        self.logger.setLevel(logging.INFO)
-        self.fh = logging.FileHandler(r"./log.txt")
-        self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        self.fh.setFormatter(self.formatter)
-        self.logger.addHandler(self.fh)
+        LogFormat()
+        self.logger = logging
+        self.logger.info("the test of 'Selenium_Release_Milestones.py' starts")
 
-        self.driver = webdriver.Chrome()
-        self.url="http://127.0.0.1:8000/webbacklog/"
-        self.driver.maximize_window()
-        self.driver.get(self.url)
-        time.sleep(1)
-        self.driver.find_element_by_link_text("Resource mgmt.").click()
-        time.sleep(1)
-        self.driver.find_element_by_link_text("Resource allocation to releases").click()
-        time.sleep(1)
+        try:
+            self.driver = webdriver.Chrome()
+            self.url="http://127.0.0.1:8000/webbacklog/"
+            self.driver.maximize_window()
+            self.driver.get(self.url)
+            time.sleep(1)
+            self.driver.find_element_by_link_text("Resource mgmt.").click()
+            time.sleep(1)
+            self.driver.find_element_by_link_text("Resource allocation to releases").click()
+            time.sleep(1)
+        except:
+            self.logger.info("The web opened failed.Please check the Webbacklog program is running.")
 
     # 返回页面title
     def Find_title_Resource_Allocation_To_Release(self):
@@ -52,7 +53,7 @@ class Selenium_Resource_Allocation_To_Release:
             time.sleep(1)
             self.driver.back()
             string = "Success"
-            self.logger.info("The 'Click_Home' method running Successfully")
+            self.logger.info("The 'Click_Home' method run successfully")
         except:
             string = "Error :Element in method 'Click_Home' Not Founded"
             self.logger.exception("The 'Click_Home' method Exception Logged")
@@ -67,7 +68,7 @@ class Selenium_Resource_Allocation_To_Release:
             self.driver.find_element_by_xpath("//*[@id='resourceModal']/div/div/div/div/div[1]/button").click()
             time.sleep(1)
             string = "Success"
-            self.logger.info("The 'Click_question_Button' method running Successfully")
+            self.logger.info("The 'Click_question_Button' method run successfully")
         except:
             string = "Error :Element in method 'Click_question_Button' Not Founded"
             self.logger.exception("The 'Click_question_Button' method Exception Logged")
@@ -89,7 +90,7 @@ class Selenium_Resource_Allocation_To_Release:
             self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[2]/div[1]/div[1]/div[1]/ul/li[4]/a").click()
             time.sleep(1)
             string = "Success"
-            self.logger.info("The 'Click_First_Button' method running Successfully")
+            self.logger.info("The 'Click_First_Button' method run successfully")
         except:
             string = "Error :Element in method 'Click_First_Button' Not Founded"
             self.logger.exception("The 'Click_First_Button' method Exception Logged")
@@ -111,7 +112,7 @@ class Selenium_Resource_Allocation_To_Release:
             self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[2]/div[1]/div[1]/div[2]/ul/li[14]/a").click()
             time.sleep(1)
             string = "Success"
-            self.logger.info("The 'Click_Second_Button' method running Successfully")
+            self.logger.info("The 'Click_Second_Button' method run successfully")
         except:
             string = "Error :Element in method 'Click_Second_Button' Not Founded"
             self.logger.exception("The 'Click_Second_Button' method Exception Logged")
@@ -134,7 +135,7 @@ class Selenium_Resource_Allocation_To_Release:
             self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[2]/div[1]/div[1]/div[3]/ul/li[35]/a").click()
             time.sleep(1)
             string = "Success"
-            self.logger.info("The 'Click_Third_Button' method running Successfully")
+            self.logger.info("The 'Click_Third_Button' method run successfully")
         except:
             string = "Error :Element in method 'Click_Third_Button' Not Founded"
             self.logger.exception("The 'Click_Third_Button' method Exception Logged")
@@ -150,7 +151,7 @@ class Selenium_Resource_Allocation_To_Release:
             self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[2]/div[1]/div[1]/div[4]/div/ul/li[1]/a").click()
             time.sleep(1)
             string = "Success"
-            self.logger.info("The 'Click_Fourth_Button' method running Successfully")
+            self.logger.info("The 'Click_Fourth_Button' method run successfully")
         except:
             string = "Error :Element in method 'Click_Fourth_Button' Not Founded"
             self.logger.exception("The 'Click_Fourth_Button' method Exception Logged")
@@ -176,7 +177,7 @@ class Selenium_Resource_Allocation_To_Release:
             self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div/input[3]").click()
             time.sleep(1)
             string = "Success"
-            self.logger.info("The 'Date_Select' method running Successfully")
+            self.logger.info("The 'Date_Select' method run successfully")
         except:
             string = "Error :Element in method 'Date_Select' Not Founded"
             self.logger.exception("The 'Date_Select' method Exception Logged")
@@ -193,7 +194,7 @@ class Selenium_Resource_Allocation_To_Release:
             head.find_element_by_tag_name("input").clear()
             head.find_element_by_tag_name("input").send_keys(" ")
             str = "Success"
-            self.logger.info("The 'Search_Send_Keys' method running Successfully")
+            self.logger.info("The 'Search_Send_Keys' method run successfully")
         except:
             str  = "Error :Element in method 'Search_Send_Keys' Not Founded"
             self.logger.exception("The 'Search_Send_Keys' method Exception Logged")
@@ -214,7 +215,7 @@ class Selenium_Resource_Allocation_To_Release:
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//*[@id='DataTables_Table_0_length']/label/select").click()
             string = "Success"
-            self.logger.info("The 'Select_Show_Num' method running Successfully")
+            self.logger.info("The 'Select_Show_Num' method run successfully")
         except:
             string = "Error :Element in method 'Select_Show_Num' Not Founded"
             self.logger.exception("The 'Select_Show_Num' method Exception Logged")
@@ -245,7 +246,7 @@ class Selenium_Resource_Allocation_To_Release:
         try:
             self.driver.find_element_by_xpath("//*[@id='charts']/div[1]/canvas").click()
             str = "Success"
-            self.logger.info("The 'Canvas_is_Showed' method running Successfully")
+            self.logger.info("The 'Canvas_is_Showed' method run successfully")
         except:
             str = "Error :Element in method 'Canvas_is_Showed' Not Founded"
             self.logger.exception("The 'Canvas_is_Showed' method Exception Logged")
@@ -261,7 +262,7 @@ class Selenium_Resource_Allocation_To_Release:
             for i in all_li:
                 i.find_element_by_class_name("name").click()
             str = "Success"
-            self.logger.info("The 'Under_Canvas_Click' method running Successfully")
+            self.logger.info("The 'Under_Canvas_Click' method run successfully")
         except:
             str = "Error :Element in method 'Under_Canvas_Click' Not Founded"
             self.logger.exception("The 'Under_Canvas_Click' method Exception Logged")
@@ -293,9 +294,13 @@ class Selenium_Resource_Allocation_To_Release:
             #返回第一个页面
             self.driver.find_element_by_xpath("//*[@id='DataTables_Table_0_paginate']/ul/li[2]/a").click()
             string = "Success"
-            self.logger.info("The 'Table_Page_Change' method running Successfully")
+            self.logger.info("The 'Table_Page_Change' method run successfully")
         except:
             string = "Error :Element in method 'Table_Page_Change' Not Founded"
             self.logger.exception("The 'Table_Page_Change' method Exception Logged")
         return string
 
+    # 析构函数
+    def __del__(self):
+        self.driver.quit()
+        self.logger.info("the test of 'Selenium_Resource_Allocation_To_Release.py' has finished.")

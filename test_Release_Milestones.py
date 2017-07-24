@@ -69,7 +69,7 @@ class TestRelease_Milestones:
             assert row[0] != ""
 
     def teardown_class(self):
-        self.test.driver.quit()
+        del self.test
 
 if __name__ == '__main__':
     pytest.main("-q test_Release_Milestones.py")
