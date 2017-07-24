@@ -2,7 +2,9 @@
 #@ 2017.7.20
 #@ author:FuYuQian
 #@ content:UI test for Resource allocation vs P2 contract
-#@ log file：“myapp.log"
+# @2017.7.24
+# @author:FuYuQian
+# @content: write log file: myapp.log
 
 from selenium import webdriver
 import time
@@ -10,12 +12,16 @@ from configLogFormat import *
 
 class login:
     def __init__(self):
-        self.driver=webdriver.Chrome()
-        self.url="http://127.0.0.1:8000/webbacklog/login/?next=/webbacklog/rscalcvsp2/"
-        self.driver.get(self.url)
-        #调用logFormat类来设置log输出格式
+        # 调用logFormat类来设置log输出格式
         LogFormat()
         logging.info('the tests of login starts.')
+        try:
+            self.driver=webdriver.Chrome()
+            self.url="http://127.0.0.1:8000/webbacklog/login/?next=/webbacklog/rscalcvsp2/"
+            self.driver.get(self.url)
+            logging.info("页面加载正常")
+        except:
+            logging.error("页面加载失败")
 
 
     def __del__(self):

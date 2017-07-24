@@ -6,7 +6,6 @@ import pytest
 from FeatureDashBoard import*
 
 class TestFeatureDashBoard(object):
-
     def setup_class(self):
         self.myT=FeatureDashBoard()
 
