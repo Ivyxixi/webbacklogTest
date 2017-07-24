@@ -43,7 +43,7 @@ class Selenium_Release_Milestones:
             time.sleep(1)
             self.driver.back()
             string = "Success"
-            self.logger.info("The 'Click_Home' method running Successfully")
+            self.logger.info("The 'Click_Home' method run successfully")
         except:
             self.logger.exception("The 'Click_Home' method Exception Logged")
             string = "Error :Element in method 'Click_Home' Not Founded"
@@ -54,7 +54,7 @@ class Selenium_Release_Milestones:
         try:
             text1 = self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[1]/ol/li[2]").text
             text2 = self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[1]/ol/li[3]").text
-            self.logger.info("The 'Find_link_Test' method running Successfully")
+            self.logger.info("The 'Find_link_Test' method run successfully")
             return text1, text2
         except:
             self.logger.exception("The 'Find_link_Test' method Exception Logged")
@@ -67,7 +67,7 @@ class Selenium_Release_Milestones:
             time.sleep(1)
             self.driver.find_element_by_xpath("//*[@id='milestoneModal']/div/div/div/div/div[1]/button").click()
             string = "Success"
-            self.logger.info("The 'Click_question_Button' method running Successfully")
+            self.logger.info("The 'Click_question_Button' method run successfully")
         except:
             string = "Error :Element in method 'Click_question_Button' Not Founded"
             self.logger.exception("The 'Click_question_Button' method Exception Logged")
@@ -82,7 +82,7 @@ class Selenium_Release_Milestones:
             self.driver.find_element_by_xpath("//*[@id='milestoneTable_filter']/label/input").clear()
             self.driver.find_element_by_xpath("//*[@id='milestoneTable_filter']/label/input").send_keys("s")
             string = "Success"
-            self.logger.info("The 'Search_Send_Keys' method running Successfully")
+            self.logger.info("The 'Search_Send_Keys' method run successfully")
         except:
             string = "Error :Element in method 'Search_Send_Keys' Not Founded"
             self.logger.exception("The 'Search_Send_Keys' method Exception Logged")
@@ -112,7 +112,7 @@ class Selenium_Release_Milestones:
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//*[@id='milestoneTable']/thead/tr/th[5]").click()
             string = "Success"
-            self.logger.info("The 'Click_table_title' method running Successfully")
+            self.logger.info("The 'Click_table_title' method run successfully")
         except:
             string = "Error :Element in method 'Click_table_title' Not Founded"
             self.logger.exception("The 'Click_table_title' method Exception Logged")
@@ -132,7 +132,7 @@ class Selenium_Release_Milestones:
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//*[@id='milestoneTable']/tbody/tr[1]/td[6]/buttn[2]").click()
             string = "Success"
-            self.logger.info("The 'Click_Edit' method running Successfully")
+            self.logger.info("The 'Click_Edit' method run successfully")
         except:
             string = "Error :Element in method 'Click_Edit' Not Founded"
             self.logger.exception("The 'Click_Edit' method Exception Logged")
@@ -152,7 +152,7 @@ class Selenium_Release_Milestones:
             time.sleep(0.5)
             self.driver.find_element_by_xpath("//*[@id='milestoneTable_length']/label/select").click()
             string = "Success"
-            self.logger.info("The 'Select_Show_Num' method running Successfully")
+            self.logger.info("The 'Select_Show_Num' method run successfully")
         except:
             string = "Error :Element in method 'Select_Show_Num' Not Founded"
             self.logger.exception("The 'Select_Show_Num' method Exception Logged")
@@ -166,7 +166,7 @@ class Selenium_Release_Milestones:
             time.sleep(1)
             self.driver.back()
             string = "Success"
-            self.logger.info("The 'Click_Nokia' method running Successfully")
+            self.logger.info("The 'Click_Nokia' method run successfully")
         except:
             string = "Error :Element in method 'Click_Nokia' Not Founded"
             self.logger.exception("The 'Click_Nokia' method Exception Logged")
