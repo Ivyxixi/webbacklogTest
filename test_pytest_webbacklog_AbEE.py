@@ -33,7 +33,7 @@ class Testwebbacklog_AbEE:
         # 是否继续接受下一下警告
         # Would  like to proceed with the next warning
         self.accept_next_alert = True
-        logging.info("start test_pytest_webbacklog_AbEE.py")
+        logging.info("the test of test_pytest_webbacklog_AbEE starts")
 
 
 
@@ -100,7 +100,7 @@ class Testwebbacklog_AbEE:
             logging.info("chart display successfully")
         except:
             logging.error("chart display wrong")
-        logging.info("end test_pytest_webbacklog_AbEE.py")
+        logging.info("the test of test_pytest_webbacklog_AbEE ends\n")
 
     # 用来查找页面元素是否存在
     # Used to find if the page element exists

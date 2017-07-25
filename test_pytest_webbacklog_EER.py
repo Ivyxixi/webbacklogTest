@@ -34,7 +34,7 @@ class Testwebbacklog_EER:
         # 是否继续接受下一下警告
         # Would  like to proceed with the next warning
         self.accept_next_alert = True
-        logging.info("start test_pytest_webbacklog_EER.py")
+        logging.info("the test of test_pytest_webbacklog_EER starts")
 
     #某张表格对应的Xpath矩阵
     #one table matrix of Xpath
@@ -525,7 +525,7 @@ class Testwebbacklog_EER:
             logging.info("5g17A5G,1707,EXT,pred table display successfully")
         except:
             logging.error("5g17A5G,1707,EXT,pred table display wrong")
-        logging.info("end test_pytest_webbacklog_EER.py")
+        logging.info("the test of test_pytest_webbacklog_EER ends\n")
 
 
 
