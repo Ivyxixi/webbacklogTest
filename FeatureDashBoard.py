@@ -16,9 +16,9 @@ class FeatureDashBoard():
             self.driver=webdriver.Chrome()
             self.driver.get("http://127.0.0.1:8000/webbacklog/featuredashboard/#5G17A_CT;All;Effort;")
             self.driver.maximize_window()
-            logging.info("页面加载正常")
+            logging.info("load web page successfully.")
         except:
-            logging.error("页面加载失败")
+            logging.error("load web page failed.")
 
 
     def __del__(self):
@@ -36,9 +36,9 @@ class FeatureDashBoard():
         try:
             h1=driver.find_element_by_tag_name("h1")
             print(h1.text)
-            logging.info("h1-title文本正常")
+            logging.info("the text of h1-title run successfully.")
         except:
-            logging.error("h1-title文本错误")
+            logging.error("the text of h1-title run failed.")
         return h1.text
 
     # 测试右边栏的提示
@@ -50,10 +50,10 @@ class FeatureDashBoard():
             driver.find_element_by_link_text("Home").click()
             driver.back()
             time.sleep(0.5)
-            logging.info("Home链接正常")
+            logging.info("the link of Home run successfully.")
         except:
             succ=0
-            logging.error("Home链接错误")
+            logging.error("the link of Home run failed.")
 
         try:
             mylist[0]=succ
@@ -61,9 +61,9 @@ class FeatureDashBoard():
             time.sleep(0.5)
             mylist[2]=driver.find_element_by_xpath("/html/body/div/div[1]/section[1]/ol/li[3]").text
             time.sleep(0.5)
-            logging.info('右边栏文本正常')
+            logging.info('the text of breadcrumb run successfully.')
         except:
-            logging.error('右边栏文本错误')
+            logging.error('the text of breadcrumb run failed.')
         return mylist
 
     #测试h3的文本和帮助按钮
@@ -77,10 +77,10 @@ class FeatureDashBoard():
             time.sleep(1)
             driver.back()
             time.sleep(1)
-            logging.info("panel-title正常")
+            logging.info("the panel-title run successfully.")
         except:
             succ=0
-            logging.error("panel-title错误")
+            logging.error("the panel-title run failed.")
         mylist[1]=succ
         return mylist
 
@@ -96,10 +96,10 @@ class FeatureDashBoard():
             time.sleep(1)
             driver.back()
             time.sleep(1)
-            logging.info("main-footer文本及Nokia的链接正常")
+            logging.info("the main-footer run successfully.")
         except:
             succ=0
-            logging.error("main-footer文本及Nokia的链接错误")
+            logging.error("the main-footer run failed.")
         return succ
 
     #测试dataTables_length
@@ -114,9 +114,9 @@ class FeatureDashBoard():
             mylist[1]=driver.find_element_by_xpath("//*[@id='table-feature_length']/label/select/option[2]").text
             mylist[2]=driver.find_element_by_xpath("//*[@id='table-feature_length']/label/select/option[3]").text
             mylist[3]=driver.find_element_by_xpath("//*[@id='table-feature_length']/label/select/option[4]").text
-            logging.info("dataTables_length下拉框正常")
+            logging.info("the dropdown of dataTables_length run successfully.")
         except:
-            logging.error("dataTables_length下拉框错误")
+            logging.error("the dropdown of dataTables_length run failed.")
         return mylist
 
     #测试SystemRealse按键
@@ -137,10 +137,10 @@ class FeatureDashBoard():
                 time.sleep(2)
                 driver.find_element_by_id("systemRelease").click()
                 s=s+1
-            logging.info("SystemRealse下拉框正常")
+            logging.info("the dropdown of SystemRealserun run successfully.")
         except:
             succ=0
-            logging.error("SystemRealse下拉框错误")
+            logging.error("the dropdown of SystemRealserun run failed.")
         return succ
 
     #测试RnD Commitment:按键
@@ -161,10 +161,10 @@ class FeatureDashBoard():
                 time.sleep(2)
                 driver.find_element_by_id("systemRdCmt").click()
                 s = s + 1
-            logging.info("RnD Commitment下拉框正常")
+            logging.info("the dropdown of RnD Commitment run successfully.")
         except:
             succ=0
-            logging.error("RnD Commitment下拉框错误")
+            logging.error("the dropdown of RnD Commitment run failed.")
         return succ
 
 
@@ -186,10 +186,10 @@ class FeatureDashBoard():
                 time.sleep(2)
                 driver.find_element_by_id("viewSelect").click()
                 s = s + 1
-            logging.info("viewSelect下拉框正常")
+            logging.info("the dropdown of viewSelect run successfully.")
         except:
             succ=0
-            logging.error("viewSelect下拉框错误")
+            logging.error("the dropdown of viewSelect run failed.")
         return succ
 
     #测试search按键
@@ -201,10 +201,10 @@ class FeatureDashBoard():
             time.sleep(1)
             self.load()
             time.sleep(1)
-            logging.info("search搜索框正常")
+            logging.info("the search button run successfully.")
         except:
             succ=0
-            logging.error("search搜索框错误")
+            logging.error("the search button run failed.")
         return succ
 
     #测试表格的行normal head
@@ -236,9 +236,9 @@ class FeatureDashBoard():
                     #e.click()            最后一行不能点击，也不能输出文本值，无解
                 time.sleep(1)
                 s=s+1
-            logging.info("normalHead表格表头行正常")
+            logging.info("the normalHead of excel run successfully.")
         except:
-            logging.error("normalHead表格表头行错误")
+            logging.error("the normalHead of excel run failed.")
         return mylist
 
     #测试第一列columnName，读取文本值并点击，并打印非控制，可用于测试是否全满
@@ -255,16 +255,16 @@ class FeatureDashBoard():
                 if driver.find_element_by_xpath(xpath).text:
                     print driver.find_element_by_xpath(xpath).text
                     time.sleep(1)
-                    driver.find_element_by_xpath(xpath).click()
-                    time.sleep(1)
-                    driver.back()
-                    time.sleep(2)
+                    #driver.find_element_by_xpath(xpath).click()
+                    #time.sleep(1)
+                    #driver.back()
+                    #time.sleep(2)
                     num=num+1
                 s=s+1
             print num
-            logging.info("表格第一列Name正常")
+            logging.info("the column1-Name run successfully.")
         except:
-            logging.error("表格第一列Name错误")
+            logging.error("the column1-Name run failed.")
 
 
     # 测试第二列FeatureComponentTitle，读取非空文本值,并打印非空值
@@ -284,9 +284,9 @@ class FeatureDashBoard():
                     num=num+1
                 s=s+1
             print num
-            logging.info("表格第二列FeatureComponentTitle正常")
+            logging.info("the column2-FeatureComponentTitle run successfully.")
         except:
-            logging.error("表格第二列FeatureComponentTitle错误")
+            logging.error("the column2-FeatureComponentTitle run failed.")
 
     # 测试第三列Ram，读取非空文本值,并打印非空值
     def column3Ram(self):
@@ -305,9 +305,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第三列Ram正常")
+            logging.info("the column3-Ram run successfully.")
         except:
-            logging.error("表格第三列Ram错误")
+            logging.error("the column3-Ram run failed.")
 
     # 测试第四列Contribution from External BLs，读取非空文本值,并打印非空值
     def column4Contributionfrom(self):
@@ -326,9 +326,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第四列Contribution from External BLs正常")
+            logging.info("the column4-Contribution run successfully.")
         except:
-            logging.error("表格第四列Contribution from External BLs错误")
+            logging.error("the column4-Contribution run failed.")
 
     # 测试第五列FS Status，读取非空文本值,并打印非空值
     def column5FS(self):
@@ -347,9 +347,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第五列FS Status正常")
+            logging.info("the column5-FS Status run successfully.")
         except:
-            logging.error("表格第五列FS Status错误")
+            logging.error("the column5-FS Status run failed.")
 
 
     # 测试第六列Total Resource Demand[h]，读取非空文本值,并打印非空值
@@ -369,9 +369,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第六列Total Resource Demand[h]正常")
+            logging.info("the column6-Total Resource Demand[h] run successfully.")
         except:
-            logging.error("表格第六列Total Resource Demand[h]错误")
+            logging.error("the column6-Total Resource Demand[h] run failed.")
 
     # 测试第七列Total Progress，读取非空文本值,并打印非空值
     def column7TotalProgress(self):
@@ -390,9 +390,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第七列Total Progress正常")
+            logging.info("the column7-Total Progress run successfully.")
         except:
-            logging.error("表格第七列Total Progress错误")
+            logging.error("the column7-Total Progress run failed.")
 
     # 测试第八列Sub-Feature Completion，读取非空文本值,并打印非空值
     def column8SubFeature(self):
@@ -411,9 +411,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第八列Sub-Feature Completion正常")
+            logging.info("the column8-Sub-Feature Completion run successfully.")
         except:
-            logging.error("表格第八列Sub-Feature Completion错误")
+            logging.error("the column8-Sub-Feature Completion run failed.")
 
     # 测试第九列5G_FT Resource Demand[h]，读取非空文本值,并打印非空值
     def column95G_FTResource(self):
@@ -432,9 +432,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第九列5G_FT Resource Demand[h]正常")
+            logging.info("the column9-5G_FT Resource Demand[h] run successfully.")
         except:
-            logging.error("表格第九列5G_FT Resource Demand[h]错误")
+            logging.error("the column9-5G_FT Resource Demand[h] run failed.")
 
 
     # 测试第十列5G_FT Progress，读取非空文本值,并打印非空值
@@ -454,9 +454,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第十列5G_FT Progress正常")
+            logging.info("the column10-5G_FT Progress run successfully.")
         except:
-            logging.error("表格第十列5G_FT Progress错误")
+            logging.error("the column10-5G_FT Progress run failed.")
 
     # 测试第十一列5G_FT Sub-Feature Completion，读取非空文本值,并打印非空值
     def column115GFTSub_Feature(self):
@@ -475,9 +475,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第十一列5G_FT Sub-Feature Completion正常")
+            logging.info("the column11-5G_FT Sub-Feature Completion run successfully.")
         except:
-            logging.error("表格第十一列5G_FT Sub-Feature Completion错误")
+            logging.error("the column11-5G_FT Sub-Feature Completion run failed.")
 
 
     # 测试第十二列5G_FT Progress Per Plan，读取非空文本值,并打印非空值
@@ -497,9 +497,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第十二列5G_FT Progress Per Plan正常")
+            logging.info("the column12-5G_FT Progress Per Plan run successfully.")
         except:
-            logging.error("表格第十二列5G_FT Progress Per Plan错误")
+            logging.error("the column12-5G_FT Progress Per Plan run failed.")
 
     # 测试第十三列5G_FT Progress Per Plan，读取非空文本值,并打印非空值
     def column135G_FTProgressPerPlan(self):
@@ -518,9 +518,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第十三列5G_FT Progress Per Plan正常")
+            logging.info("the column13-5G_FT Progress Per Plan run successfully.")
         except:
-            logging.error("表格第十三列5G_FT Progress Per Plan错误")
+            logging.error("the column13-5G_FT Progress Per Plan run failed.")
 
     # 测试第十四列RAM Input Comment，读取非空文本值,并打印非空值
     def column14RAMInputComment(self):
@@ -539,9 +539,9 @@ class FeatureDashBoard():
                     num = num + 1
                 s = s + 1
             print num
-            logging.info("表格第十四列RAM Input Comment正常")
+            logging.info("the column14-RAM Input Comment Per Plan run successfully.")
         except:
-            logging.info("表格第十四列RAM Input Comment正常")
+            logging.info("the column14-RAM Input Comment Per Plan run failed.")
 
 
 def myTest():
@@ -555,7 +555,7 @@ def myTest():
     #myT.RnDCommitment()
     #myT.viewSelect()
     #myT.search()
-    myT.normalHead()
+    #myT.normalHead()
     #myT.column1Name()
     #myT.column2FeatureComponentTitle()
     #myT.column3Ram()

@@ -2,8 +2,7 @@
 #@ 2017/7/24
 #@ author:FuYuQian
 #@ content: config log format use the logging.basicConfig so that it can be used repeatedly.
-#@ 用法，需要对输出进行格式化的时候只需要申明一个LogFormat类即可:LogFormat()
-#@ 待修改，应该改为每次运行清空再输入，各个文件之间为叠加输出
+#@ usage:LogFormat()
 
 import logging
 

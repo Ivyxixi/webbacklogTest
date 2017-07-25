@@ -18,13 +18,13 @@ class BurnDown:
             self.driver=webdriver.Chrome()
             self.url="http://127.0.0.1:8000/webbacklog/releaseburndown/"
             self.driver.get(self.url)
-            logging.info("页面加载正常")
+            logging.info("load web page successfully.")
         except:
-            logging.error("页面加载失败")
+            logging.error("load web page failed.")
 
     def __del__(self):
         self.driver.quit()
-        logging.info("the tests of BurnDown ends.")
+        logging.info("the tests of BurnDown ends.\n")
 
     #测试H1的title,输出控制台并返回h1.title
     def H1title(self):
@@ -32,9 +32,9 @@ class BurnDown:
         try:
             h1=driver.find_element_by_tag_name("h1")
             print(h1.text)
-            logging.info("h1-title正常")
+            logging.info("h1-title run successfully.")
         except:
-            logging.error("h1-title错误")
+            logging.error("h1-title run failed.")
         return h1.text
 
     # 测试右边栏的提示,输出控制台并通过mylist[]返回，便于测试
@@ -46,10 +46,10 @@ class BurnDown:
             driver.find_element_by_link_text("Home").click()
             driver.back()
             time.sleep(0.5)
-            logging.info("Home正常")
+            logging.info("the link of Home run successfully.")
         except:
             succ=0
-            logging.error("Home错误")
+            logging.error("the link of Home run failed.")
         mylist[0]=succ
 
         try:
@@ -60,9 +60,9 @@ class BurnDown:
             print driver.find_element_by_xpath("/html/body/div/div[1]/section[1]/ol/li[3]").text
             mylist[2] = driver.find_element_by_xpath("/html/body/div/div[1]/section[1]/ol/li[3]").text
             time.sleep(0.5)
-            logging.info('右边栏文本正常')
+            logging.info('the text of breadcrumb run successfully.')
         except:
-            logging.error("右边栏文本错误")
+            logging.error("the text of breadcrumb run failed.")
         return mylist
 
     #测试h3的文本和帮助按钮,结果输出并用mylist[0]文本值、mylist[1]帮助按钮是否正常来返回
@@ -72,9 +72,9 @@ class BurnDown:
         try:
             print driver.find_element_by_id("panel-title").text
             mylist[0]=driver.find_element_by_id("panel-title").text
-            logging.info("panel-title正常")
+            logging.info("the panel-title run successfully.")
         except:
-            logging.error("panel-title错误")
+            logging.error("the panel-title run failed.")
 
         succ=1
         try:
@@ -82,10 +82,10 @@ class BurnDown:
             time.sleep(1)
             driver.back()
             time.sleep(1)
-            logging.info("help按键正常")
+            logging.info("the button of help run successfully.")
         except:
             succ=0
-            logging.error("help按键错误")
+            logging.error("the button of help run failed.")
         mylist[1]=succ
         return mylist
 
@@ -100,10 +100,10 @@ class BurnDown:
         try:
             print driver.find_element_by_class_name("main-footer").text
             mylist[0]=driver.find_element_by_class_name("main-footer").text
-            logging.info("main-footer文本正常")
+            logging.info("the text of main-footer run successfully.")
         except:
             succ1=0
-            logging.error("main-footer文本错误")
+            logging.error("the text of main-footer run failed.")
         mylist[0]=succ1
 
         succ2=1
@@ -112,10 +112,10 @@ class BurnDown:
             time.sleep(1)
             driver.back()
             time.sleep(1)
-            logging.info("Nokia链接正常")
+            logging.info("the link of Nokia run successfully.")
         except:
             succ2=0
-            logging.error("Nokia链接错误")
+            logging.error("the link of Nokia run failed.")
         mylist[1]=succ2
         return mylist
 
@@ -133,9 +133,9 @@ class BurnDown:
                 print name
                 mylist[s-1]=name
                 s=s+1
-            logging.info("systemRealse下拉框正常")
+            logging.info("the dropdown of systemRealse run successfully.")
         except:
-            logging.error("systemRealse下拉框错误")
+            logging.error("the dropdown of systemRealse run failed.")
         return mylist
 
    #测试Team的下拉框,并返回各个下拉框的值
@@ -153,9 +153,9 @@ class BurnDown:
                 print name
                 mylist[s-1]=name
                 s=s+1
-            logging.info("Team下拉框正常")
+            logging.info("the dropdown of Team run successfully.")
         except:
-            logging.error("Team下拉框错误")
+            logging.error("the dropdown of Team run failed.")
         return mylist
 
         # 测试Team的下拉框,并返回各个下拉框的值
@@ -168,10 +168,10 @@ class BurnDown:
         try:
             driver.find_element_by_tag_name("canvas")
             time.sleep(0.5)
-            logging.info("canvas画布正常")
+            logging.info("the canvas run successfully.")
         except:
             succ=0
-            logging.error("canvas画布错误")
+            logging.error("the canvas run failed.")
         return succ
 
 
