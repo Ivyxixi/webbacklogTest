@@ -23,7 +23,7 @@ class FeatureDashBoard():
 
     def __del__(self):
         self.driver.quit()
-        logging.info("the tests of FeatureDashBoard ends.")
+        logging.info("the tests of FeatureDashBoard ends.\n")
 
     #加载load界面
     def load(self):
