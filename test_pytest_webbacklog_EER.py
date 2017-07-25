@@ -34,6 +34,7 @@ class Testwebbacklog_EER:
         # 是否继续接受下一下警告
         # Would  like to proceed with the next warning
         self.accept_next_alert = True
+        logging.info("start test_pytest_webbacklog_EER.py")
 
     #某张表格对应的Xpath矩阵
     #one table matrix of Xpath
@@ -257,17 +258,17 @@ class Testwebbacklog_EER:
             #find help button
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[1]/div[1]/div/div[1]/i").click()
             time.sleep(1)
-            logging.info("帮助按钮正常 help button is true")
+            logging.info("help button run successfully")
         except:
-            logging.error("帮助按钮异常 help button is wrong")
+            logging.error("help button is wrong")
         try:
             # 找到x按钮
             # find close button
             driver.find_element_by_xpath("//*[@id='featurebuildModal']/div/div/div/div/div[1]/button").click()
             time.sleep(1)
-            logging.info("关闭按钮正常 close button is true")
+            logging.info("close button run successfully")
         except:
-            logging.error("关闭按钮异常 close button is wrong")
+            logging.error("close button is wrong")
 
         try:
             #测试home
@@ -278,18 +279,18 @@ class Testwebbacklog_EER:
             #back
             driver.back()
             time.sleep(1)
-            logging.info("home按钮正常 home button is true")
+            logging.info("home button run successfully")
         except:
-            logging.error("home按钮异常 home button is wrong")
+            logging.error("home button is wrong")
 
         try:
             #测试页面文字
             #test title
             title = driver.find_element_by_xpath("/html/body/div/div[1]/section[1]/h1").text
             assert title == u'Feature Build Entry & Exit   Under Construction'
-            logging.info("文字显示正常 Text is true")
+            logging.info("Text display successfully")
         except:
-            logging.error("文字显示异常 Text is wrong")
+            logging.error("Text is wrong")
 
         try:
             #选择5g17,1706,all,pred这张表格
@@ -303,9 +304,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17,1706,all,pred这张表格正常 5g17,1706,all,pred table true")
+            logging.info("5g17,1706,all,pred table display successfully")
         except:
-            logging.error("5g17,1706,all,pred这张表格异常 5g17,1706,all,pred table wrong")
+            logging.error("5g17,1706,all,pred table display wrong")
 
         try:
             #测试该表格数据
@@ -342,9 +343,9 @@ class Testwebbacklog_EER:
                         driver.find_element_by_xpath("//*[@id='viewSelect']").click()
                         driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
                 assert jl == self.csjl[key]
-            logging.info("5g17,1706,all,pred这张表格数据正常 5g17,1706,all,pred table data true")
+            logging.info("5g17,1706,all,pred table data display successfully")
         except:
-            logging.info("5g17,1706,all,pred这张表格数据异常 5g17,1706,all,pred table data wrong")
+            logging.info("5g17,1706,all,pred table data display wrong")
 
         try:
             # 选择5g17,1706,FT,pred这张表格
@@ -354,9 +355,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17,1706,FT,pred这张表格正常 5g17,1706,FT,pred table true")
+            logging.info("5g17,1706,FT,pred display successfully")
         except:
-            logging.error("5g17,1706,FT,pred这张表格异常 5g17,1706,FT,pred table wrong")
+            logging.error("5g17,1706,FT,pred table display wrong")
 
         try:
             # 选择5g17,1706,FT,e这张表格
@@ -364,9 +365,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
             time.sleep(1)
-            logging.info("5g17,1706,FT,e这张表格正常 5g17,1706,FT,e table true")
+            logging.info("5g17,1706,FT,e table display successfully")
         except:
-            logging.erroe("5g17,1706,FT,e这张表格异常 5g17,1706,FT,e table wrong")
+            logging.erroe("5g17,1706,FT,e table display wrong")
 
         try:
             # 选择5g17,1706,EXT,pred这张表格
@@ -376,9 +377,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17,1706,EXT,pred这张表格正常 5g17,1706,EXT,pred table true")
+            logging.info("5g17,1706,EXT,pred table display successfully")
         except:
-            logging.error("5g17,1706,EXT,pred这张表格异常 5g17,1706,EXT,pred table wrong")
+            logging.error("5g17,1706,EXT,pred table display wrong")
 
         try:
             # 选择5g17,1707,EXT,pred这张表格
@@ -390,9 +391,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17,1707,EXT,pred这张表格正常 5g17,1707,EXT,pred table true")
+            logging.info("5g17,1707,EXT,pred table display successfully")
         except:
-            logging.error("5g17,1707,EXT,pred table这张表格异常 5g17,1707,EXT,pred table table wrong")
+            logging.error("5g17,1707,EXT,pred table table display wrong")
 
         try:
             # 选择5g17,1707,FT,pred这张表格
@@ -402,9 +403,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17,1707,FT,pred这张表格正常 5g17,1707,FT,pred table true")
+            logging.info("5g17,1707,FT,pred table display successfully")
         except:
-            logging.error("5g17,1707,FT,pred这张表格异常 5g17,1707,FT,pred table wrong")
+            logging.error("5g17,1707,FT,pred table display wrong")
 
         try:
             # 选择5g17,1707,FT,e这张表格
@@ -412,9 +413,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
             time.sleep(1)
-            logging.info("5g17,1707,FT,e这张表格正常 5g17,1707,FT,e table true")
+            logging.info("5g17,1707,FT,e table display successfully")
         except:
-            logging.error("5g17,1707,FT,e这张表格异常 5g17,1707,FT,e table wrong")
+            logging.error("5g17,1707,FT,e table display wrong")
 
         try:
             # 选择5g17,1707,EXT,pred这张表格
@@ -424,9 +425,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17,1707,EXT,pred这张表格正常 5g17,1707,EXT,pred table true")
+            logging.info("5g17,1707,EXT,pred table display successfully")
         except:
-            logging.error("5g17,1707,EXT,pred这张表格异常 5g17,1707,EXT,pred table wrong")
+            logging.error("5g17,1707,EXT,pred table display wrong")
 
         try:
             # 选择5g17A5G,1706,all,pred这张表格
@@ -440,9 +441,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17A5G,1706,all,pred这张表格正常 5g17A5G,1706,all,pred table true")
+            logging.info("5g17A5G,1706,all,pred table display successfully")
         except:
-            logging.error("5g17A5G,1706,all,pred这张表格异常 5g17A5G,1706,all,pred table wrong")
+            logging.error("5g17A5G,1706,all,pred table display wrong")
         try:
             # 选择5g17A5G,1706,FT,pred这张表格
             # chose 5g17A5G,1706,FT,pred table
@@ -451,9 +452,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17A5G,1706,FT,pred这张表格正常 5g17A5G,1706,FT,pred table true")
+            logging.info("5g17A5G,1706,FT,pred table display successfully")
         except:
-            logging.error("5g17A5G,1706,FT,pred这张表格异常 5g17A5G,1706,FT,pred table wrong")
+            logging.error("5g17A5G,1706,FT,pred table display wrong")
 
         try:
             # 选择5g17A5G,1706,FT,e这张表格
@@ -461,9 +462,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
             time.sleep(1)
-            logging.info("5g17A5G,1706,FT,e这张表格正常 5g17A5G,1706,FT,e table true")
+            logging.info("5g17A5G,1706,FT,e table display successfully")
         except:
-            logging.error("5g17A5G,1706,FT,e这张表格异常 5g17A5G,1706,FT,e table wrong")
+            logging.error("5g17A5G,1706,FT,e table display wrong")
 
         try:
             # 选择5g17A5G,1706,EXT,pred这张表格
@@ -473,9 +474,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17A5G,1706,EXT,pred这张表格正常 5g17A5G,1706,EXT,pred table true")
+            logging.info("5g17A5G,1706,EXT,pred table display successfully")
         except:
-            logging.info("5g17A5G,1706,EXT,pred这张表格异常 5g17A5G,1706,EXT,pred table wrong")
+            logging.info("5g17A5G,1706,EXT,pred table display wrong")
 
         try:
             # 选择5g17A5G,1707,EXT,pred这张表格
@@ -487,9 +488,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17A5G,1707,EXT,pred这张表格正常 5g17A5G,1707,EXT,pred table true")
+            logging.info("5g17A5G,1707,EXT,pred table display successfully")
         except:
-            logging.error("5g17A5G,1707,EXT,pred这张表格异常 5g17A5G,1707,EXT,pred table wrong")
+            logging.error("5g17A5G,1707,EXT,pred table display wrong")
 
         try:
             # 选择5g17A5G,1707,FT,pred这张表格
@@ -499,9 +500,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17A5G,1707,FT,pred这张表格正常 5g17A5G,1707,FT,pred table true")
+            logging.info("5g17A5G,1707,FT,pred table display successfully")
         except:
-            logging.error("5g17A5G,1707,FT,pred这张表格异常 5g17A5G,1707,FT,pred table wrong")
+            logging.error("5g17A5G,1707,FT,pred table display wrong")
 
         try:
             # 选择5g17A5G,1707,FT,e这张表格
@@ -509,9 +510,9 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath( "/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[2]/a").click()
             time.sleep(1)
-            logging.info("5g17A5G,1707,FT,e这张表格正常 5g17A5G,1707,FT,e table true")
+            logging.info("5g17A5G,1707,FT,e table display successfully")
         except:
-            logging.error("5g17A5G,1707,FT,e这张表格异常 5g17A5G,1707,FT,e table wrong")
+            logging.error("5g17A5G,1707,FT,e table display wrong")
 
         try:
             # 选择5g17A5G,1707,EXT,pred这张表格
@@ -521,9 +522,10 @@ class Testwebbacklog_EER:
             driver.find_element_by_xpath("//*[@id='viewSelect']").click()
             driver.find_element_by_xpath("/html/body/div/div[1]/section[2]/div/section/div/div[2]/div[2]/div[1]/div[5]/ul/li[1]/a").click()
             time.sleep(1)
-            logging.info("5g17A5G,1707,EXT,pred这张表格正常 5g17A5G,1707,EXT,pred table true")
+            logging.info("5g17A5G,1707,EXT,pred table display successfully")
         except:
-            logging.error("5g17A5G,1707,EXT,pred这张表格异常 5g17A5G,1707,EXT,pred table wrong")
+            logging.error("5g17A5G,1707,EXT,pred table display wrong")
+        logging.info("end test_pytest_webbacklog_EER.py")
 
 
 
