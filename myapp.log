@@ -1,0 +1,138 @@
+Mon, 24 Jul 2017 15:31:07 BurnDown.py[line:16] INFO the tests of BurnDown starts.
+Mon, 24 Jul 2017 15:31:14 BurnDown.py[line:21] INFO 页面加载正常
+Mon, 24 Jul 2017 15:31:14 BurnDown.py[line:35] INFO h1-title正常
+Mon, 24 Jul 2017 15:31:23 BurnDown.py[line:49] INFO Home正常
+Mon, 24 Jul 2017 15:31:25 BurnDown.py[line:63] INFO 右边栏文本正常
+Mon, 24 Jul 2017 15:31:25 BurnDown.py[line:75] INFO panel-title正常
+Mon, 24 Jul 2017 15:31:27 BurnDown.py[line:85] INFO help按键正常
+Mon, 24 Jul 2017 15:31:30 BurnDown.py[line:103] INFO main-footer文本正常
+Mon, 24 Jul 2017 15:31:54 BurnDown.py[line:115] INFO Nokia链接正常
+Mon, 24 Jul 2017 15:31:56 BurnDown.py[line:136] INFO systemRealse下拉框正常
+Mon, 24 Jul 2017 15:31:59 BurnDown.py[line:156] INFO Team下拉框正常
+Mon, 24 Jul 2017 15:32:00 BurnDown.py[line:171] INFO canvas画布正常
+Mon, 24 Jul 2017 15:32:21 BurnDown.py[line:27] INFO the tests of BurnDown ends.
+Mon, 24 Jul 2017 15:32:21 FeatureDashBoard.py[line:14] INFO the tests of FeatureDashBoard starts.
+Mon, 24 Jul 2017 15:32:28 FeatureDashBoard.py[line:19] INFO 页面加载正常
+Mon, 24 Jul 2017 15:32:29 FeatureDashBoard.py[line:39] INFO h1-title文本正常
+Mon, 24 Jul 2017 15:32:40 FeatureDashBoard.py[line:53] INFO Home链接正常
+Mon, 24 Jul 2017 15:32:42 FeatureDashBoard.py[line:64] INFO 右边栏文本正常
+Mon, 24 Jul 2017 15:32:44 FeatureDashBoard.py[line:80] INFO panel-title正常
+Mon, 24 Jul 2017 15:33:11 FeatureDashBoard.py[line:99] INFO main-footer文本及Nokia的链接正常
+Mon, 24 Jul 2017 15:33:14 FeatureDashBoard.py[line:117] INFO dataTables_length下拉框正常
+Mon, 24 Jul 2017 15:34:13 FeatureDashBoard.py[line:140] INFO SystemRealse下拉框正常
+Mon, 24 Jul 2017 15:34:37 FeatureDashBoard.py[line:164] INFO RnD Commitment下拉框正常
+Mon, 24 Jul 2017 15:34:47 FeatureDashBoard.py[line:189] INFO viewSelect下拉框正常
+Mon, 24 Jul 2017 15:34:50 FeatureDashBoard.py[line:204] INFO search搜索框正常
+Mon, 24 Jul 2017 15:35:12 FeatureDashBoard.py[line:239] INFO normalHead表格表头行正常
+Mon, 24 Jul 2017 15:35:59 FeatureDashBoard.py[line:265] INFO 表格第一列Name正常
+Mon, 24 Jul 2017 15:36:06 FeatureDashBoard.py[line:287] INFO 表格第二列FeatureComponentTitle正常
+Mon, 24 Jul 2017 15:36:13 FeatureDashBoard.py[line:308] INFO 表格第三列Ram正常
+Mon, 24 Jul 2017 15:36:17 FeatureDashBoard.py[line:329] INFO 表格第四列Contribution from External BLs正常
+Mon, 24 Jul 2017 15:36:20 FeatureDashBoard.py[line:350] INFO 表格第五列FS Status正常
+Mon, 24 Jul 2017 15:36:30 FeatureDashBoard.py[line:372] INFO 表格第六列Total Resource Demand[h]正常
+Mon, 24 Jul 2017 15:36:40 FeatureDashBoard.py[line:393] INFO 表格第七列Total Progress正常
+Mon, 24 Jul 2017 15:36:49 FeatureDashBoard.py[line:414] INFO 表格第八列Sub-Feature Completion正常
+Mon, 24 Jul 2017 15:36:58 FeatureDashBoard.py[line:435] INFO 表格第九列5G_FT Resource Demand[h]正常
+Mon, 24 Jul 2017 15:37:08 FeatureDashBoard.py[line:457] INFO 表格第十列5G_FT Progress正常
+Mon, 24 Jul 2017 15:37:18 FeatureDashBoard.py[line:478] INFO 表格第十一列5G_FT Sub-Feature Completion正常
+Mon, 24 Jul 2017 15:37:22 FeatureDashBoard.py[line:500] INFO 表格第十二列5G_FT Progress Per Plan正常
+Mon, 24 Jul 2017 15:37:26 FeatureDashBoard.py[line:521] INFO 表格第十三列5G_FT Progress Per Plan正常
+Mon, 24 Jul 2017 15:37:30 FeatureDashBoard.py[line:542] INFO 表格第十四列RAM Input Comment正常
+Mon, 24 Jul 2017 15:37:51 FeatureDashBoard.py[line:26] INFO the tests of FeatureDashBoard ends.
+Mon, 24 Jul 2017 15:37:51 Selenium_Release_Milestones.py[line:17] INFO the test of 'Selenium_Release_Milestones.py' starts
+Mon, 24 Jul 2017 15:38:10 Selenium_Release_Milestones.py[line:46] INFO The 'Click_Home' method run successfully
+Mon, 24 Jul 2017 15:38:11 Selenium_Release_Milestones.py[line:70] INFO The 'Click_question_Button' method run successfully
+Mon, 24 Jul 2017 15:38:12 Selenium_Release_Milestones.py[line:85] INFO The 'Search_Send_Keys' method run successfully
+Mon, 24 Jul 2017 15:38:12 Selenium_Release_Milestones.py[line:118] ERROR The 'Click_table_title' method Exception Logged
+Traceback (most recent call last):
+  File "C:\lovelyqian\Github\webbacklogTest-master\Selenium_Release_Milestones.py", line 95, in Click_table_title
+    self.driver.find_element_by_xpath("//*[@id='milestoneTable']/thead/tr/th[1]").click()
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webelement.py", line 77, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webelement.py", line 493, in _execute
+    return self._parent.execute(command, params)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: unknown error: Element <th class="small text-center bg-light-blue sorting_asc" style="vertical-align: middle; width: 135px;" tabindex="0" aria-controls="milestoneTable" rowspan="1" colspan="1" aria-label="...: activate to sort column descending" aria-sort="ascending">System Release</th> is not clickable at point (344, 222). Other element would receive the click: <div class="modal-backdrop fade"></div>
+  (Session info: chrome=58.0.3029.110)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+
+Mon, 24 Jul 2017 15:38:13 Selenium_Release_Milestones.py[line:138] ERROR The 'Click_Edit' method Exception Logged
+Traceback (most recent call last):
+  File "C:\lovelyqian\Github\webbacklogTest-master\Selenium_Release_Milestones.py", line 125, in Click_Edit
+    self.driver.find_element_by_xpath("//*[@id='milestoneTable']/tbody/tr[1]/td[6]/buttn[1]").click()
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webelement.py", line 77, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webelement.py", line 493, in _execute
+    return self._parent.execute(command, params)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: unknown error: Element <buttn class="btn-... btn-blue btn btn-block btn-primary btn-sm" data-action="edit">edit</buttn> is not clickable at point (1496, 265). Other element would receive the click: <div class="modal-backdrop fade"></div>
+  (Session info: chrome=58.0.3029.110)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+
+Mon, 24 Jul 2017 15:38:13 Selenium_Release_Milestones.py[line:158] ERROR The 'Select_Show_Num' method Exception Logged
+Traceback (most recent call last):
+  File "C:\lovelyqian\Github\webbacklogTest-master\Selenium_Release_Milestones.py", line 145, in Select_Show_Num
+    self.driver.find_element_by_xpath("//*[@id='milestoneTable_length']/label/select").click()
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webelement.py", line 77, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webelement.py", line 493, in _execute
+    return self._parent.execute(command, params)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: unknown error: Element <select name="milestoneTable_length" aria-controls="milestoneTable" class="form-control input-sm">...</select> is not clickable at point (326, 177). Other element would receive the click: <div class="modal-backdrop fade"></div>
+  (Session info: chrome=58.0.3029.110)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+
+Mon, 24 Jul 2017 15:38:13 Selenium_Release_Milestones.py[line:172] ERROR The 'Click_Nokia' method Exception Logged
+Traceback (most recent call last):
+  File "C:\lovelyqian\Github\webbacklogTest-master\Selenium_Release_Milestones.py", line 165, in Click_Nokia
+    self.driver.find_element_by_link_text("Nokia").click();
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 337, in find_element_by_link_text
+    return self.find_element(by=By.LINK_TEXT, value=link_text)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"Nokia"}
+  (Session info: chrome=58.0.3029.110)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+
+Mon, 24 Jul 2017 15:38:42 Selenium_Release_Milestones.py[line:205] INFO the test of 'Selenium_Release_Milestones.py' has finished.
+Mon, 24 Jul 2017 15:38:42 Selenium_Resource_Allocation_To_Release.py[line:16] INFO the test of 'Selenium_Release_Milestones.py' starts
+Mon, 24 Jul 2017 15:39:04 Selenium_Resource_Allocation_To_Release.py[line:56] INFO The 'Click_Home' method run successfully
+Mon, 24 Jul 2017 15:39:06 Selenium_Resource_Allocation_To_Release.py[line:71] INFO The 'Click_question_Button' method run successfully
+Mon, 24 Jul 2017 15:39:12 Selenium_Resource_Allocation_To_Release.py[line:93] INFO The 'Click_First_Button' method run successfully
+Mon, 24 Jul 2017 15:39:19 Selenium_Resource_Allocation_To_Release.py[line:115] INFO The 'Click_Second_Button' method run successfully
+Mon, 24 Jul 2017 15:39:24 Selenium_Resource_Allocation_To_Release.py[line:141] ERROR The 'Click_Third_Button' method Exception Logged
+Traceback (most recent call last):
+  File "C:\lovelyqian\Github\webbacklogTest-master\Selenium_Resource_Allocation_To_Release.py", line 132, in Click_Third_Button
+    self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/section[2]/div/section/div/div[2]/div[1]/div[1]/div[3]/ul/li[5]/a").click()
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webelement.py", line 77, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webelement.py", line 493, in _execute
+    return self._parent.execute(command, params)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "c:\python27\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: unknown error: Element <a role="menuitem" tabindex="-1" class="filter-item-system-release" data-action="selectTeam">...</a> is not clickable at point (673, 337). Other element would receive the click: <div style="position: absolute; display: block; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1), top 0.4s cubic-bezier(0.23, 1, 0.32, 1); background-color: rgba(50, 50, 50, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;; line-height: 21px; padding: 5px; left: 494px; top: 112px;">...</div>
+  (Session info: chrome=58.0.3029.110)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64)
+
+Mon, 24 Jul 2017 15:39:28 Selenium_Resource_Allocation_To_Release.py[line:154] INFO The 'Click_Fourth_Button' method run successfully
+Mon, 24 Jul 2017 15:39:32 Selenium_Resource_Allocation_To_Release.py[line:197] INFO The 'Search_Send_Keys' method run successfully
+Mon, 24 Jul 2017 15:39:36 Selenium_Resource_Allocation_To_Release.py[line:218] INFO The 'Select_Show_Num' method run successfully
+Mon, 24 Jul 2017 15:39:42 Selenium_Resource_Allocation_To_Release.py[line:180] INFO The 'Date_Select' method run successfully
+Mon, 24 Jul 2017 15:39:58 Selenium_Resource_Allocation_To_Release.py[line:249] INFO The 'Canvas_is_Showed' method run successfully
+Mon, 24 Jul 2017 15:40:07 Selenium_Resource_Allocation_To_Release.py[line:265] INFO The 'Under_Canvas_Click' method run successfully
+Mon, 24 Jul 2017 15:40:16 Selenium_Resource_Allocation_To_Release.py[line:297] INFO The 'Table_Page_Change' method run successfully

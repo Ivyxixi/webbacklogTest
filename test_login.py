@@ -10,7 +10,6 @@ class TestLogin:
     def setup_class(self):
         self.myT=login()
 
-
     def teardown_class(self):
         #self.myT.driver.quit()
         self.myT.__del__()

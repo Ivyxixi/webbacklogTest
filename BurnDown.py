@@ -1,19 +1,26 @@
 #-*- coding:UTF-8  -*-
-# @2017,7,19
-# @author:fuYuQian
+# @2017.7.19
+# @author:FuYuQian
 # @content:UI TEST OF BURN DOWN
-# @log file: myapp.log
+# @2017.7.24
+# @author:FuYuQian
+# @content: write log file: myapp.log
+
 
 from selenium import webdriver
 from configLogFormat import *
 import time
 class BurnDown:
     def __init__(self):
-        self.driver=webdriver.Chrome()
-        self.url="http://127.0.0.1:8000/webbacklog/releaseburndown/"
-        self.driver.get(self.url)
         LogFormat()
         logging.info("the tests of BurnDown starts.")
+        try:
+            self.driver=webdriver.Chrome()
+            self.url="http://127.0.0.1:8000/webbacklog/releaseburndown/"
+            self.driver.get(self.url)
+            logging.info("页面加载正常")
+        except:
+            logging.error("页面加载失败")
 
     def __del__(self):
         self.driver.quit()

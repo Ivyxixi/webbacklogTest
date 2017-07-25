@@ -53,6 +53,5 @@ class TestBurnDown:
         #self.myT.driver.quit()
         self.myT.__del__()
 
-
 if __name__ == '__main__':
     pytest.main("test_BurnDown.py")
