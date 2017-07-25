@@ -270,7 +270,7 @@ class Selenium_Resource_Allocation_To_Release:
 
     #表格页面切换
     def Table_Page_Change(self):
-        time.sleep(1)
+        time.sleep(2)
         string= ""
         try:
             head = self.driver.find_element_by_xpath("//*[@id='DataTables_Table_0_paginate']/ul")
@@ -303,4 +303,4 @@ class Selenium_Resource_Allocation_To_Release:
     # 析构函数
     def __del__(self):
         self.driver.quit()
-        self.logger.info("the test of 'Selenium_Resource_Allocation_To_Release.py' has finished.")
+        self.logger.info("the test of 'Selenium_Resource_Allocation_To_Release.py' ends.\n")

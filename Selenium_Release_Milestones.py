@@ -202,7 +202,7 @@ class Selenium_Release_Milestones:
     #析构函数
     def __del__(self):
         self.driver.quit()
-        self.logger.info("the test of 'Selenium_Release_Milestones.py' has finished.")
+        self.logger.info("the test of 'Selenium_Release_Milestones.py' ends.\n")
 
 
 
